@@ -31,7 +31,7 @@ if __name__ == '__main__':
   learning_rate_decay_rate = 0.8 # 0.9
 
   cut_size = 44
-  total_epoch = 1
+  total_epoch = 60
 
   path = os.path.join(output_path)
 
