@@ -1,0 +1,27 @@
+.nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-links{
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nav-link{
+  padding: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/*
+.nav-link a{
+  text-decoration: none;
+  color: black;
+}
+*/

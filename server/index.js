@@ -13,6 +13,12 @@ APP.set('port', process.env.PORT || process.env.APP_PORT);
 
 APP.use(EXPRESS.static(__dirname + '/public'));
 
+APP.use((req, res, next) => {
+  res.header("Access-Control-Allow-Headers", "x-requested-with, content-type,Authorization");
+  next();
+});
+
+
 APP.post('/add_person', (req, res) => {    
   people.push(req.body);
   console.log(people);
