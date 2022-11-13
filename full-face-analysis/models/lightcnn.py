@@ -165,7 +165,7 @@ class LightCNN():
         feat = Dense(256, name = name + '_dense1', kernel_regularizer=regularizers.l2(0.0005))(Flatten()(X))
 
         ret_extractor = Model(inputs=in_img, outputs=feat, name=name)
-        ret_extractor.summary()
+        #ret_extractor.summary()
         
         return ret_extractor
     
@@ -189,7 +189,7 @@ class LightCNN():
         feat = self._mfm(Flatten()(X), name = name + '_mfm2', out_channels=256, dense=True)
 
         ret_extractor = Model(inputs=in_img, outputs=feat, name=name)
-        ret_extractor.summary()
+        #ret_extractor.summary()
         
         return ret_extractor
                     
@@ -213,7 +213,7 @@ class LightCNN():
         feat = Dense(256, name = name + '_dense1', kernel_regularizer=regularizers.l2(0.0005))(Flatten()(X))
         
         ret_extractor = Model(inputs=in_img, outputs=feat, name=name)        
-        ret_extractor.summary()
+        #ret_extractor.summary()
         
         return ret_extractor
     
@@ -225,7 +225,7 @@ class LightCNN():
         
         ret_classifier = Model(inputs=in_feat, outputs=clas, name=name)
         
-        ret_classifier.summary()
+        #ret_classifier.summary()
         return ret_classifier
         
 
@@ -253,7 +253,7 @@ class LightCNN():
         self.classifier().layers[1].rate = classifier_dropout
         
         train_model = Sequential([self.extractor(), self.classifier()])
-        train_model.summary()
+        #train_model.summary()
         
         train_model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['acc'])
         
@@ -273,7 +273,7 @@ class LightCNN():
     def evaluate(self, generator, steps=100):
         
         train_model = Sequential([self.extractor(), self.classifier()])
-        train_model.summary()
+        #train_model.summary()
         
         train_model.compile(optimizer='SGD', loss='categorical_crossentropy', metrics=['acc'])
 

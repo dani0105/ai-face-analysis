@@ -1,7 +1,5 @@
 import cv2
 import yaml
-import sys
-import time
 import numpy as np
 import tensorflow as tf
 from absl import logging

@@ -4,7 +4,7 @@ import cv2
 import tensorflow as tf
 import numpy as np
 import torch
-from modules.utils import pad_input_image, recover_pad_output, rgb2gray
+from modules.utils import pad_input_image, recover_pad_output
 from torchvision import transforms
 from torch.autograd import Variable
 from skimage.transform import resize
@@ -25,9 +25,6 @@ def load_yaml(path):
   with open(path, 'r') as f:
     loaded = yaml.load(f, Loader=yaml.Loader)
   return loaded
-
-def rgb2gray(rgb):
-    return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
 
 def processEmotion(image, model):
     image = cv2.resize(image,(48,48) )
