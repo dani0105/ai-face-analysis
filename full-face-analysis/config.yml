@@ -1,0 +1,19 @@
+#retinaface
+min_sizes: [[16, 32], [64, 128], [256, 512]]
+out_channel: 256
+weights_decay: !!float 5e-4
+input_size: 640
+steps: [8, 16, 32]
+clip: False
+variances: [0.1, 0.2]
+retina_model: 'full-face-analysis\models\weights\retinaface_res50'
+down_scale_factor: 1.0
+
+#VGG
+vgg_model: 'full-face-analysis/models/weights/vgg/VGG_Model.t7'
+cut_size: 44
+
+#LigthCNN
+num_classes: 5
+extractor_weights: 'full-face-analysis/models/weights/lightcnn/lcnn_extract29v2_lr0.00100_loss2.689_valacc0.867_epoch0030.hdf5'
+classifier_weights: 'full-face-analysis/models/weights/lightcnn/lcnn_classify_lr0.00100_loss2.689_valacc0.867_epoch0030.hdf5'
