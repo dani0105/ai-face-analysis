@@ -55,7 +55,6 @@ APP.post('/detected_group', (req, res) => {
 
   group.forEach(team => {
     if(team.group === groupName) { 
-      console.log('entra');
       team.amount += 1;      
       return;
     }
