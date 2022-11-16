@@ -8,10 +8,13 @@
   <title>Document</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/person.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
   <script src="../layouts/custom-navigator/custom-navigator.js"></script>
 </head>
 
-<body>
+<body onload="showChart()">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <custom-navigator links='[{"link":"/","name":"Inicio"}, {"link":"/pages/camera.html","name":"Camara"}, {"link":"/pages/group.html","name":"Grupos"} , {"link":"/pages/person.html","name":"Personas"} ]'>
   </custom-navigator>
 
@@ -23,6 +26,8 @@
     <input type="text" id="lname" name="lname"><br><br>
     <input type="submit" value="Submit">
   </form> 
+
+  <canvas id="myChart"></canvas>
 
   <script src="../assets/js/person.js"></script>
 </body>

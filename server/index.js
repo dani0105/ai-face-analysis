@@ -20,22 +20,59 @@ APP.use((req, res, next) => {
 
 
 APP.post('/add_person', (req, res) => {    
+  req.body.amount = 0;
   people.push(req.body);
-  console.log(people);
   res.writeHead(301, {
-    Location: 'http://localhost:3000'
+    Location: 'http://localhost:3000/pages/person.html'
+  }).end();
+})
+
+APP.get('/groups', (req, res) => {    
+  res.json(group);
+})
+
+APP.get('/people', (req, res) => {    
+  res.json(people);
+})
+
+APP.post('/detected_person', (req, res) => {    
+  const personName = req.body.name;
+
+  people.forEach(person => {
+    if(person.fname === personName) { 
+      person.amount += 1;
+      return;
+    }
+  });
+
+  res.writeHead(301, {
+    Location: 'http://localhost:3000/pages/person.html'
+  }).end();
+})
+
+APP.post('/detected_group', (req, res) => {    
+  const groupName = req.body.group;
+
+  group.forEach(team => {
+    if(team.group === groupName) { 
+      console.log('entra');
+      team.amount += 1;      
+      return;
+    }
+  });
+
+  res.writeHead(301, {
+    Location: 'http://localhost:3000/pages/person.html'
   }).end();
 })
 
 APP.post('/add_group', (req, res) => {    
+  req.body.amount = 0;
   group.push(req.body);
-  console.log(group);
   res.writeHead(301, {
-    Location: 'http://localhost:3000'
+    Location: 'http://localhost:3000/pages/group.html'
   }).end();
 })
-
-
 
 APP.listen(APP.get('port'),() => {
   console.log(`server running in http://localhost:${APP.get('port')}`);

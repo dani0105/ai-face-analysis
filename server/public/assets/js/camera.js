@@ -38,7 +38,7 @@ function openCamera(){
 
 function  openSocket(){
   socket = io(
-    'http://localhost:5000',
+    'http://201.237.131.49:5000',
     {
       autoConnect: true, //  like this, could be found in manager piece
     }
