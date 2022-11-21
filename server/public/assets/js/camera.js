@@ -45,7 +45,7 @@ function openCamera(){
 
 function  openSocket(){
   socket = io(
-    'http://201.191.35.215:5000',
+    'http://201.191.35.215:5000/',
     {
       autoConnect: true, //  like this, could be found in manager piece
     }
@@ -94,6 +94,24 @@ function  openSocket(){
     ctxRect.beginPath();
     ctxRect.rect(x1, y1, x2 - x1, y2 - y1);
     ctxRect.stroke();
+
+    //draw recognized person name in canvas
+    if(data[0].recognition) {
+      const name = data[0].recognition.class_name;
+
+      ctxRect.fillStyle = 'red';
+      ctxRect.font = "20px Arial";
+      ctxRect.fillText(name, x1 - 40, y1 - 50);
+    }
+
+    //draw recognized emotion name in canvas
+    if(data[0].emotion) {
+      const name = data[0].emotion.class;
+
+      ctxRect.fillStyle = 'red';
+      ctxRect.font = "20px Arial";
+      ctxRect.fillText(name, x1 - 40, y1 - 15);
+    }
   
   });
 }
@@ -103,7 +121,7 @@ function capture() {
   canvas.height = video.videoHeight;
  
 
-  ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+  ctx.drawImage(video, 0, 0, 400, 300);
 
   // RGBA Array
   let image = canvas.toDataURL();
