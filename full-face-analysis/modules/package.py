@@ -34,6 +34,6 @@ class Package:
   def to_grayscale(self):
     self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
 
-  def save_image(self, image):
-    cv2.imwrite("test.jpg",image)
+  def save_image(self, image,name='test.jpg'):
+    cv2.imwrite(name,image)
 
