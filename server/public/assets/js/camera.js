@@ -1,7 +1,12 @@
 const personasCheckBox = document.getElementById('personas');
 const emocionesCheckBox = document.getElementById('emociones');
+
 const canvas = document.getElementById("canvas");
+const canvasRect = document.getElementById("canvas-rect");
+
 const ctx = canvas.getContext('2d');
+const ctxRect = canvasRect.getContext('2d');
+
 const video = document.getElementById("vid");
 
 let connected = false;
@@ -10,7 +15,7 @@ let socket = null;
 
 function openCamera(){
   const mediaDevices = navigator.mediaDevices;
-  vid.muted = true;
+  video.muted = true;
   // Accessing the user camera and video.
   mediaDevices
     .getUserMedia({
@@ -23,6 +28,8 @@ function openCamera(){
       video.srcObject = stream;
       video.addEventListener("loadedmetadata", () => {
         video.play();
+        console.log(video.videoWidth)
+        console.log(video.videoHeight)
       });
 
       video.addEventListener('timeupdate', () => {
@@ -78,15 +85,13 @@ function  openSocket(){
     const y1 = data[0].face.box.y1;
     const y2 = data[0].face.box.y2;
 
-
     // draw response here
-    ctx.lineWidth = 16;
-    ctx.strokeStyle = 'green';
-    ctx.beginPath();
-    // ctx.rect(x1, y1, 100, 100);
-    ctx.rect(x1, y1, x2 - x1, y2 - y1);
-    ctx.stroke();
-  
+    console.log("Dibujando en el segundo Canvas");
+    ctxRect.lineWidth = 16;
+    ctxRect.strokeStyle = 'green';
+    ctxRect.beginPath();
+    ctxRect.rect(x1, y1, x2 - x1, y2 - y1);
+    ctxRect.stroke();
   
   });
 }
@@ -94,6 +99,8 @@ function  openSocket(){
 function capture() {
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
+ 
+
   ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
   // RGBA Array
