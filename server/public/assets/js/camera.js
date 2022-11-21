@@ -38,7 +38,7 @@ function openCamera(){
 
 function  openSocket(){
   socket = io(
-    'http://201.237.131.49:5000',
+    'http://201.191.35.215:5000',
     {
       autoConnect: true, //  like this, could be found in manager piece
     }
@@ -72,7 +72,22 @@ function  openSocket(){
     processing = false;
     console.log("Result",data);
 
+    const x1 = data[0].face.box.x1;
+    const x2 = data[0].face.box.x2;
+    
+    const y1 = data[0].face.box.y1;
+    const y2 = data[0].face.box.y2;
+
+
     // draw response here
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = 'green';
+    ctx.beginPath();
+    // ctx.rect(x1, y1, 100, 100);
+    ctx.rect(x1, y1, x2 - x1, y2 - y1);
+    ctx.stroke();
+  
+  
   });
 }
 
