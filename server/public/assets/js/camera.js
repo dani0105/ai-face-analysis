@@ -85,6 +85,8 @@ function  openSocket(){
     const y1 = data[0].face.box.y1;
     const y2 = data[0].face.box.y2;
 
+    ctxRect.clearRect(0, 0, canvasRect.width, canvasRect.height);
+
     // draw response here
     console.log("Dibujando en el segundo Canvas");
     ctxRect.lineWidth = 16;
