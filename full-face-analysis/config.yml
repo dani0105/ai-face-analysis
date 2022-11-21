@@ -14,6 +14,6 @@ vgg_model: 'full-face-analysis/models/weights/vgg/VGG_Model.t7'
 cut_size: 44
 
 #LigthCNN
-num_classes: 5
-extractor_weights: 'full-face-analysis/models/weights/lightcnn/lcnn_extract29v2_lr0.00100_loss2.689_valacc0.867_epoch0030.hdf5'
-classifier_weights: 'full-face-analysis/models/weights/lightcnn/lcnn_classify_lr0.00100_loss2.689_valacc0.867_epoch0030.hdf5'
+num_classes: 10
+extractor_weights: 'full-face-analysis/models/weights/lightcnn/extractor.hdf5'
+classifier_weights: 'full-face-analysis/models/weights/lightcnn/classify.hdf5'

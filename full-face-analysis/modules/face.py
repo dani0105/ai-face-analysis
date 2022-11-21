@@ -8,7 +8,7 @@ from keras.preprocessing.image import image as keras_image
 import torch.nn.functional as F
 
 EMOTIONS = ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']
-PERSONS=['Daniel Rojas','Atal Bihari Vajpayee','George W Bush','Andre Agassi','Amelie Mauresmo', 'Enoc', 'Persona 1', 'Kendall', 'Persona 2']
+PERSONS=['abdou','Atal Bihari','Daniel Rojas','George W Bush','Andre Agassi','Amelie Mauresmo', 'Anna Kournikova', 'Arnold Schwarzenegger', 'Abel','Enoc Castro']
 
 tensor_transform =  transforms.Compose([
     transforms.TenCrop(44),

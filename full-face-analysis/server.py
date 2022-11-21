@@ -11,7 +11,7 @@ from typing import List
 
 # Variables
 
-HOST = ''
+HOST = '192.168.1.9'
 PORT = 5000
 
 config_path = "full-face-analysis/config.yml"
@@ -49,8 +49,8 @@ def analyse_image(sid, data):
 def connect(sid, environ):
   print('connect ', sid)
 
-
 def process():
+  counter = 0
   while True:
     if len(queue) <= 0:
       eventlet.sleep()
@@ -58,8 +58,8 @@ def process():
 
     to_process = queue.pop()
     to_process.decode_image()
-    #to_process.save_image(img)
-
+    #counter+=1
+    #to_process.save_image(to_process.image,f"full-face-analysis/images/test{counter}.jpg")
     result = []
 
     # get faces
@@ -102,4 +102,4 @@ def process():
 # Run
 if __name__ == '__main__':
   sio.start_background_task(process)
-  eventlet.wsgi.server(eventlet.listen(('', PORT)), app)
+  eventlet.wsgi.server(eventlet.listen((HOST, PORT)), app)
