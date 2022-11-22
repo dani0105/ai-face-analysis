@@ -3,8 +3,8 @@ require('dotenv').config();
 const EXPRESS = require('express');
 const APP = EXPRESS();
 
-const people = [];
-const group = [];
+let people = [];
+let group = [];
 
 APP.use(EXPRESS.json({ limit: '10mb' }));
 APP.use(EXPRESS.urlencoded({ extended: true }));
@@ -76,6 +76,27 @@ APP.post('/detected_group', (req, res) => {
 APP.post('/add_group', (req, res) => {
   req.body.amount = 0;
   group.push(req.body);
+  res.writeHead(301, {
+    Location: 'http://localhost:3000/pages/group.html'
+  }).end();
+})
+
+APP.post('/delete_group', (req, res) => {
+  const groupToRemove = req.body;
+
+  group = group.filter(data => groupToRemove.group !== data.group);
+
+  res.writeHead(301, {
+    Location: 'http://localhost:3000/pages/group.html'
+  }).end();
+})
+
+APP.post('/delete_person', (req, res) => {
+  const personToRemove = req.body;
+  console.log(personToRemove);
+
+  people = people.filter(data => personToRemove.person !== data.fname);
+
   res.writeHead(301, {
     Location: 'http://localhost:3000/pages/group.html'
   }).end();

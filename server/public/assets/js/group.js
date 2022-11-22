@@ -1,5 +1,8 @@
 const form = document.getElementById('groupForm');
 const personList = document.getElementById('personList');
+const groupsSelect = document.getElementById('groupsSelect');
+
+let groups = [];
 
 function addPerson() {
   const newPerson = document.getElementById('newPerson').value;
@@ -14,6 +17,29 @@ function addPerson() {
 
   form.appendChild(input);
   form.append(newBullet);
+}
+
+function populateGroupSelect() {
+  groups.forEach(group => {
+    const opt = document.createElement("option");
+    opt.value = group.group;
+    opt.id = group.group;
+    opt.innerHTML = group.group;    
+    groupsSelect.appendChild(opt);
+  });
+}
+
+function deleteGroup(group) {  
+  fetch('http://localhost:3000/delete_group', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ group })
+  }).then(() => {
+    location.reload();
+  });
 }
 
 function groupDetected(group) {
@@ -50,8 +76,7 @@ function getGroupAttributeArray(groups, attribute) {
 }
 
 async function showChart() {
-  const groups = await getGroups();
-  console.log(groups);
+  groups = await getGroups();
 
   const groupNames = getGroupAttributeArray(groups, 'group');
   const groupAmount = getGroupAttributeArray(groups, 'amount');
@@ -80,4 +105,6 @@ async function showChart() {
       }
     }
   });
+
+  populateGroupSelect()
 };

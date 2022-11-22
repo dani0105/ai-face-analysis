@@ -12,23 +12,36 @@
   <script src="../layouts/custom-navigator/custom-navigator.js"></script>
 </head>
 
-<body onload="showChart()">  
+<body onload="showChart()">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <custom-navigator links='[{"link":"/","name":"Inicio"}, {"link":"/pages/camera.html","name":"Camara"}, {"link":"/pages/group.html","name":"Grupos"} , {"link":"/pages/person.html","name":"Personas"} ]'>
+  <custom-navigator
+    links='[{"link":"/","name":"Inicio"}, {"link":"/pages/camera.html","name":"Camara"}, {"link":"/pages/group.html","name":"Grupos"} , {"link":"/pages/person.html","name":"Personas"} ]'>
   </custom-navigator>
 
-  <form action="/add_group" method="POST" id="groupForm">
-    <h1>Crear grupo: </h1>
-    <label for="fname">Nombre del grupo:</label><br>
-    <input type="text" id="group" name="group"><br>
-    <input type="submit" value="Submit">
-  </form>
+  <div class="flex-container">
+
+    <div class="margin">
+      <form action="/add_group" method="POST" id="groupForm">
+        <h1>Crear grupo: </h1>
+        <label for="fname">Nombre del grupo:</label><br>
+        <input type="text" id="group" name="group"><br>
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+    <div class="margin">
+      <h1>Eliminar grupo: </h1>
+      <select style="display: inline;" name="groups" id="groupsSelect"></select>
+      <button style="display: inline;" onclick="deleteGroup(document.getElementById('groupsSelect').value)">Eliminar
+        Grupo</button>
+    </div>
+  </div>
 
   <br>
   <input type="text" id="newPerson" name="group" style="display: inline;">
   <button style="display: inline;" onclick="addPerson()">Agregar Persona</button>
-  <ul id="personList"></ul>  
+  <ul id="personList"></ul>
 
   <canvas id="myChart"></canvas>
 

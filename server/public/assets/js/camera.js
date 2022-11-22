@@ -7,7 +7,7 @@ const canvasRect = document.getElementById("canvas-rect");
 const ctx = canvas.getContext('2d');
 const ctxRect = canvasRect.getContext('2d');
 
-const video = document.getElementById("vid");
+const video = document.getElementById('vid');
 
 let connected = false;
 let processing = false;
@@ -204,3 +204,4 @@ function capture() {
   socket.emit("analyse_image", data);
 }
 
+populateGroupSelect();

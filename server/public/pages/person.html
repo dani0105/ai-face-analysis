@@ -15,17 +15,30 @@
 <body onload="showChart()">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <custom-navigator links='[{"link":"/","name":"Inicio"}, {"link":"/pages/camera.html","name":"Camara"}, {"link":"/pages/group.html","name":"Grupos"} , {"link":"/pages/person.html","name":"Personas"} ]'>
+  <custom-navigator
+    links='[{"link":"/","name":"Inicio"}, {"link":"/pages/camera.html","name":"Camara"}, {"link":"/pages/group.html","name":"Grupos"} , {"link":"/pages/person.html","name":"Personas"} ]'>
   </custom-navigator>
 
-  <form action="/add_person" method="POST">
-    <h1>Agregar personas: </h1>
-    <label for="fname">Nombre:</label><br>
-    <input type="text" id="fname" name="fname"><br>
-    <label for="lname">Apellidos:</label><br>
-    <input type="text" id="lname" name="lname"><br><br>
-    <input type="submit" value="Submit">
-  </form> 
+  <div class="flex-container">
+
+    <div class="margin">
+      <form action="/add_person" method="POST">
+        <h1>Agregar personas: </h1>
+        <label for="fname">Nombre:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Apellidos:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="margin">
+      <h1>Eliminar persona: </h1>
+      <select style="display: inline;" name="person" id="personSelect"></select>
+      <button style="display: inline;" onclick="deletePerson(document.getElementById('personSelect').value)">Eliminar
+        persona</button>
+    </div>
+  </div>
 
   <canvas id="myChart"></canvas>
 
