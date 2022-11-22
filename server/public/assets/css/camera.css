@@ -1,7 +1,5 @@
 .wrapper {
   position: relative;
-  width: 400px;
-  height: 300px;
 }
 
 .wrapper canvas {

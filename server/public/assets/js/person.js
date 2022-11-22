@@ -1,15 +1,3 @@
-//class_name
-function personDetected(name) {
-  fetch('http://localhost:3000/detected_person', {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name })
-});
-}
-
 async function getPeople() {
   const people = await fetch('http://localhost:3000/people', {
     method: 'GET',
