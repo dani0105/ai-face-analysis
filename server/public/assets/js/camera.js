@@ -149,7 +149,7 @@ function drawRecognizedFeatures(facesRecognized) {
 
 function openSocket() {
   socket = io(
-    'http://201.191.35.215:5000/',
+    'http://201.191.48.44:5000/',
     {
       autoConnect: true, //  like this, could be found in manager piece
     }
@@ -203,5 +203,3 @@ function capture() {
 
   socket.emit("analyse_image", data);
 }
-
-populateGroupSelect();
